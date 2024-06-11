@@ -1,5 +1,5 @@
 .container {
-  height: 100vh;
+  /* height: 100vh; */
   width: 100%;
   background-color: #5d5d5d;
   /* color: white; */
@@ -87,16 +87,20 @@ a {
 .meals {
   width: 100%;
   padding: 30px 0px;
-  row-gap: 10px;
-  background-color: rgb(191, 194, 171);
+  /* background-color: rgb(191, 194, 171); */
   display: flex;
   flex-wrap: wrap;
+  row-gap: 10px;
 }
 
 .meals-img {
   width: 100%;
-  height: 200px;
-  /* background-color: rgb(233, 247, 145); */
+  height: 550px;
+  background-color: rgb(243, 245, 229);
+  border-radius: 5px;
+  /* display: flex;
+  flex-wrap: wrap; */
+  overflow: hidden;
   /* background-color: rgb(246, 206, 191); */
 }
 
@@ -104,10 +108,15 @@ a {
   width: 100%;
 }
 
+h2,
+h3,
+p {
+  color: white;
+}
 .nutrient {
-  width: 100%;
-  padding: 10px 0px;
-  background-color: rgb(216, 244, 192);
+  width: 50%;
+  /* padding: 10px 0px; */
+  /* background-color: rgb(216, 244, 192); */
 }
 
 /* .track-control {

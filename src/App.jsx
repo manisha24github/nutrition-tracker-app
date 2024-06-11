@@ -7,6 +7,7 @@ import Register from './components/Register';
 import Login from './components/Login';
 import Notfound from './components/Notfound';
 import Track from './components/Track';
+import Meals from './components/Meals';
 import Home from './components/Home';
 import NavBar from './components/NavBar';
 import NutritionMeal from './components/NutritionMeal';
@@ -23,6 +24,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/track" element={<Track />} />
+          <Route path="/meals" element={<Meals />} />
           <Route path="*" element={<Notfound />} />
           <Route path="/home" element={<Home />} />
           <Route path="/nav-bar" element={<NavBar />} />

@@ -32,11 +32,11 @@ function Track() {
   return (
     <>
       <section className="container track-container">
-        <h2>Welcome to Nutrition Tracking App!!</h2>
+        <h3>Welcome to Nutrition Tracking App!!</h3>
         <div className="search">
           <input className="search-inp" onChange={searchMeals} type="text" placeholder="Search Nutrition Food" />
           {meals.length !== 0 ? (
-            <div className="search-result">
+            <div className="search-results">
               {meals?.map((meals) => {
                 return (
                   <p className="meals" key={meals.idMeal}>
@@ -54,20 +54,18 @@ function Track() {
             </button>
           }
         </div>
-        <div>
-          meal
-          <div className="meal-img">
-            {/* <h2>Chicken Soup (100 Cal)</h2>
-            <img className="meal-image" src="https://www.themealdb.com/images/media/meals/lx1kkj1593349302.jpg" /> */}
+        <div className="meals">
+          <div className="meals-img">
+            <img
+              className="meals-image"
+              src={'https://www.themealdb.com/images/media/meals/lx1kkj1593349302.jpg'}
+            ></img>
             <h2>
               {meals.strMeal}
-              {meals.caleroies}Kcal for {grams} (100 Cal)
+              {meals.caleroies}Kcal for {grams}
             </h2>
           </div>
-          <h2>
-            {meals.strMeal}
-            {meals.caleroies}Kcal for grams (100 Cal)
-          </h2>
+
           <div className="nutrient">
             <p className="n-title">Protein</p>
             <p className="n-value">230g</p>
@@ -84,9 +82,14 @@ function Track() {
             <p className="n-title">Fiber</p>
             <p className="n-value">230g</p>
           </div>
-          <input type="number" className="inp" placeholder="Please Mentioned Quantity in Grams" />
-          <button className="btn">Track this Food</button>
         </div>
+
+        {
+          <div>
+            <input type="number" className="inp" placeholder="Please Mentioned Quantity in Grams" />
+            <button className="btn">Track this Food</button>
+          </div>
+        }
       </section>
     </>
   );
