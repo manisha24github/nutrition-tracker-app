@@ -1,50 +1,48 @@
 import React, { useEffect, useState } from 'react';
-import Slider from 'react-slick';
-// Import css files
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
+import NavBar from './NavBar';
+import TrendingSlider from './TrendingSlider';
+import { useParams } from 'react-router-dom';
 
 const NutritionMenu = () => {
+  const { idMeal } = useParams();
+
   const [data, setData] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
-      const api = await fetch('https://www.themealdb.com/api/json/v1/1/search.php?s');
+      const api = await fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${idMeal}`);
       const data = await api.json();
       console.log(data.meals);
-      setData(data.meals);
+      setData(data.meals[0]);
     };
 
     fetchData();
-  }, []);
-
-  var settings = {
-    dots: true,
-    infinite: true,
-    slidesToShow: 3,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 2000,
-    pauseOnHover: true,
-  };
+  }, [idMeal]);
 
   return (
     <>
+      <NavBar />
       <div
         style={{
-          height: '50vh',
           width: '90%',
-          margin: auto,
+          margin: 0,
+          textAlign: 'center',
         }}
       >
-        <Slider {...settings}>
-          {data.map((d) => {
-            return (
-              <div className="slider">
-                <img src={d.strMealThumb} alt="" style={{ width: '20px', height: '10px' }} />
-              </div>
-            );
-          })}
-        </Slider>
+        <h1>{data.strMeal}</h1>
+        <div
+          style={{
+            display: 'flex',
+          }}
+        >
+          <div className="img">
+            <img src={'data.strMealThumb'} alt="" style={{ width: '10rem' }} />
+          </div>
+          <div className="content">
+            <button className="btn">Ingredents</button>
+            <button className="btn">Instruction</button>
+          </div>
+        </div>
+        <TrendingSlider />
       </div>
     </>
   );

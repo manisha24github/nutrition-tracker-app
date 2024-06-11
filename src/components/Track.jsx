@@ -10,39 +10,49 @@ function Track() {
   // });
 
   function searchMeals(event) {
-    fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${event.target.value}`, {
-      method: 'GET',
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        setMeals(data.meals);
-        console.log(data.meals);
+    if (event.target.value.length !== 0) {
+      fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${event.target.value}`, {
+        method: 'GET',
       })
-      .catch((err) => {
-        console.log(err);
-      });
-  }
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.message === undefined) {
+            setMeals(data.meals);
+            console.log(data.meals);
+          }
+        })
 
+        .catch((err) => {
+          console.log(err);
+        });
+    } else {
+      setMeals([]);
+    }
+  }
   return (
     <>
       <section className="container track-container">
         <h2>Welcome to Nutrition Tracking App!!</h2>
         <div className="search">
           <input className="search-inp" onChange={searchMeals} type="text" placeholder="Search Nutrition Food" />
-          <button className="btn">
-            <Link className="link" to="/nav-bar">
-              Meals
-            </Link>
-          </button>
-          <div className="search-result">
-            {meals?.map((meals) => {
-              return (
-                <p className="meals" key={meals.idMeal}>
-                  {meals.strMeal}
-                </p>
-              );
-            })}
-          </div>
+          {meals.length !== 0 ? (
+            <div className="search-result">
+              {meals?.map((meals) => {
+                return (
+                  <p className="meals" key={meals.idMeal}>
+                    {meals.strMeal}
+                  </p>
+                );
+              })}
+            </div>
+          ) : null}
+          {
+            <button className="btn">
+              <Link className="link" to="/home">
+                Meals
+              </Link>
+            </button>
+          }
         </div>
         <div>
           meal

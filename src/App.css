@@ -30,11 +30,11 @@
   border: 1px solid gray;
 }
 .btn {
-  padding: 10px 50px;
-  border-radius: 5px;
+  padding: 10px 30px;
+  border-radius: 10px;
   color: gray;
   font-weight: bold;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   border: 1px solid gray;
   cursor: pointer;
   margin-left: 5px;
@@ -55,6 +55,7 @@ a {
 }
 
 .track-container {
+  width: 100vh;
   align-items: flex-start;
   flex-direction: column;
 }
@@ -106,7 +107,7 @@ a {
 .nutrient {
   width: 100%;
   padding: 10px 0px;
-  background-color: rgb(229, 215, 17);
+  background-color: rgb(216, 244, 192);
 }
 
 /* .track-control {
@@ -139,29 +140,79 @@ a {
 .main {
   margin: 0;
   padding: 0;
+  overflow: hidden;
 }
 .nav {
   background-color: #5d5d5d;
   color: white;
   display: flex;
   width: 100%;
-  justify-content: center;
-  height: 12vh;
+  justify-content: space-between;
+  height: 17%;
+  padding: 5px;
 }
 .left {
-  left: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 16%;
 }
 .search-nav {
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+}
+.search-nav input {
+  width: 25rem;
+  height: 26px;
+  border-radius: 5px;
 }
 .right {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
+  width: 43%;
+}
+.right div {
+  padding: 1rem;
+  font-size: 1rem;
+  font-weight: bold;
+}
+.right div :hover {
+  background-color: rgb(217, 204, 229);
+}
+
+.slider {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem;
+  margin-left: 2rem;
+  perspective: 1000px;
+}
+.slider img {
+  border-radius: 5px;
+  border: 2px solid gray;
+  transition: transform 0.3s ease;
+}
+.slider img:hover {
+  transform: translateZ(100px);
+  border: 2px solid greenyellow;
+}
+.slider2 {
+  width: 95%;
+  margin: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 800px;
+}
+.slider2 img {
+  border-radius: 5px;
+  border: 2px solid gray;
+  transition: transform 0.3s ease;
+}
+.slider2 img:hover {
+  transform: translateZ(150px);
+  border: 2px solid greenyellow;
 }

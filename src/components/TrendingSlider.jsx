@@ -5,11 +5,11 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
-const NutritionMeal = () => {
+const TrendingSlider = () => {
   const [data, setData] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
-      const api = await fetch('https://www.themealdb.com/api/json/v1/1/search.php?s');
+      const api = await fetch('https://www.themealdb.com/api/json/v1/1/filter.php?a=Canadian');
       const data = await api.json();
       console.log(data.meals);
       setData(data.meals);
@@ -21,29 +21,35 @@ const NutritionMeal = () => {
   var settings = {
     // dots: true,
     infinite: true,
-    slidesToShow: 5,
+    slidesToShow: 2,
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 1000,
-    pauseOnHover: true,
+    speed: 2000,
+    autoplaySpeed: 500,
+    cssEase: 'linear',
   };
 
   return (
     <>
       <div
         style={{
-          height: '56vh',
-          width: '90%',
-          backgroundColor: 'pink',
+          height: '26vh',
+          width: '99%',
+          backgroundColor: 'lightgreen',
         }}
       >
-        <slider {...settings}>
+        <slider
+          {...settings}
+          style={{
+            marginTop: '1rem',
+          }}
+        >
           {data.map((d) => {
             return (
               <Link to={`/${d.idMeal}`}>
                 {/* key={id.idMeal} */}
-                <div className="slider">
-                  <img src={d.strMealThumb} alt="" style={{ width: '200px', height: '5rem' }} />
+                <div className="slider2">
+                  <img src={d.strMealThumb} alt="" style={{ width: '10rem', height: '10rem' }} />
                 </div>
               </Link>
             );
@@ -53,4 +59,4 @@ const NutritionMeal = () => {
     </>
   );
 };
-export default NutritionMeal;
+export default TrendingSlider;
